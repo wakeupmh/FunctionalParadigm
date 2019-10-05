@@ -4,6 +4,10 @@
 
 let component = ReasonReact.statelessComponent("App");
 
+/* 
+  the '~' symbol indicating that it was passed into props and '_' symbol indicating that it
+  was isn't used and ignored
+*/
 let make = (~message, _children) => {
   ...component,
   render: _self =>
@@ -13,9 +17,7 @@ let make = (~message, _children) => {
         <h2> (ReasonReact.string(message)) </h2>
       </div>
       <p className="App-intro">
-        (ReasonReact.string("To get started, edit"))
-        <code> (ReasonReact.string(" src/app.re ")) </code>
-        (ReasonReact.string("and save to reload."))
+        <Todo />
       </p>
     </div>,
 };

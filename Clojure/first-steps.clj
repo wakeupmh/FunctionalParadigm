@@ -3,7 +3,7 @@
     [value]
     (let [discount-tax (/ 15 100)
         discount (* value discount-tax)]
-        (* value (- value discount))))
+        (- value discount)))
 
 (value-discounted 1000)
 

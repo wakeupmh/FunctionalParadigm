@@ -4,13 +4,13 @@ let component = ReasonReact.statelessComponent("Item");
     render: _self =>
         <div className="item">
             <input
-                _type="checkbox"
+                type_="checkbox"
                 checked=item.completed
                 onChange=(_ => onToggle(item.id))
             />
-            <p> {ReasonReact.string(item.title)} </p>
+            <p className={item.completed ? "markAsDone" : ""}> {ReasonReact.string(item.title)} </p>
             <button onClick=(_ => onRemove(item.id))>
-                {ReasonReact.string("🗑")}
+                {ReasonReact.string("Remove")}
             </button>
         </div>
     };

@@ -14,6 +14,6 @@ let make = (~value, ~onInputText, ~submit, _children) => {
                         )
                 )
             />
-            <button onClick=(_ => submit())> (ReasonReact.string("➕")) </button>
+            <button onClick=(_ => submit())> (ReasonReact.string("Add")) </button>
         </div>
 };

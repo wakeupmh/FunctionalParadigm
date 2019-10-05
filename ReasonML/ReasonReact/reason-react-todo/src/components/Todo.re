@@ -24,7 +24,7 @@ let make = _children => {
     {
         ...component,
         initialState: () => {
-            items: [{id: 0, title: "Learn Reason React 📝", completed: false}],
+            items: [{id: 0, title: "Learn Reason React", completed: false}],
             inputText: "",
         },
         reducer: action =>
@@ -62,7 +62,7 @@ let make = _children => {
             let {items, inputText} = self.state;
             <div className="app">
                 <div className="app-header">
-                    <div className="title"> {ReasonReact.string("✅ Todo List")} </div>
+                    <div className="title"> {ReasonReact.string("Todo List")} </div>
                 </div>
                 <Input
                     submit=(_ => self.send(Submit))

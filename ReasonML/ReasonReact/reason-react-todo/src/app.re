@@ -7,6 +7,9 @@ let component = ReasonReact.statelessComponent("App");
 /* 
   the '~' symbol indicating that it was passed into props and '_' symbol indicating that it
   was isn't used and ignored
+
+  Rendered a component <Todo /> without importing any file
+  In ReasonReact, every component is a module and doesn’t need to be imported 
 */
 let make = (~message, _children) => {
   ...component,

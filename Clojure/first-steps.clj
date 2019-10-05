@@ -4,3 +4,9 @@
     (* value (- 1 0.15)))
 
 (value-discounted 1000)
+
+
+(defn exp [x n]
+  (reduce * (repeat n x)))
+
+(exp 2 3)

@@ -14,3 +14,5 @@
 
 (println (map print-15 demand))
 
+(defn price-of-products [[_ value]]                                  ;if you don't need a value, just pass a _ in params
+(* (:quantity value) (:price value)))

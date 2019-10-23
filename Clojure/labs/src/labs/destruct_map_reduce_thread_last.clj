@@ -16,3 +16,8 @@
 
 (defn price-of-products [[_ value]]                                  ;if you don't need a value, just pass a _ in params
 (* (:quantity value) (:price value)))
+
+(defn total [demand]
+  (reduce + (map price-of-products demand)))
+
+(println (total demand))

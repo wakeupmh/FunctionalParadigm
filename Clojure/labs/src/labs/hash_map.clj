@@ -40,7 +40,7 @@
 (println (update-in demand [:backpack :quantity] inc))      ;update nested maps
 
 (println (-> demand
-             :backpack 
+             :backpack
              :quantity))
 
 

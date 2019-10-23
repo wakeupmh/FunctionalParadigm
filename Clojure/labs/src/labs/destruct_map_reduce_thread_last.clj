@@ -57,3 +57,9 @@
 (defn paid? [item]
   (> (get item :price 0) 0))
 (println (filter #(paid? (second %)) demand))
+
+;another way using free?
+(defn paid? [item]
+  (not (free? item)))
+  
+(println (filter #(paid? (second %)) demand))

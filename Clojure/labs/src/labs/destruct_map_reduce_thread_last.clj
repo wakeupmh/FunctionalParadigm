@@ -21,3 +21,24 @@
   (reduce + (map price-of-products demand)))
 
 (println (total demand))
+
+;Thread Last
+(defn price-of-products [value]
+  (* (:quantity value) (:price value)))
+
+(defn total [demand]
+  (->> demand
+        vals
+        (map price-of-products)
+        (reduce +)))
+
+(println (total demand))
+
+;with lambda
+(defn total [demand]
+  (->> demand
+       vals
+       (map #(* (:quantity %) (:price %)))
+       (reduce +)))
+
+(println (total demand))

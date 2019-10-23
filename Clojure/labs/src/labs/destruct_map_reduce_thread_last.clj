@@ -51,4 +51,8 @@
   (<= (get item :price 0) 0))
 
 (println (filter free? (vals demand)))
+;within lambda
+(println (filter #(free? (second %)) demand))               ;second because I just want to use val of hashmap
 
+(defn free? [item]
+  (<= (get item :price 0) 0))

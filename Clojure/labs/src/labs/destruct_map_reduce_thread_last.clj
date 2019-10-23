@@ -42,3 +42,13 @@
        (reduce +)))
 
 (println (total demand))
+
+(def demand {:backpack {:quantity 4 :price 80}
+             :t-shirt {:quantity 5 :price 40}
+             :keychain {:quantity 10}})
+
+(defn free? [item]
+  (<= (get item :price 0) 0))
+
+(println (filter free? (vals demand)))
+

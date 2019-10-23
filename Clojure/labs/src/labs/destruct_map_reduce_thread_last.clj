@@ -61,5 +61,9 @@
 ;another way using free?
 (defn paid? [item]
   (not (free? item)))
-  
+
 (println (filter #(paid? (second %)) demand))
+
+;using comp with composition of func, because it compose function for us
+(def paid? (comp not free?))
+(println (paid? {:price 100}))

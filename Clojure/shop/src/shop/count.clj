@@ -29,4 +29,14 @@
 (println (count ["dylan" "inae" "leandro" "marcos"]))
 (println (count []))
 
-;
+;loop
+
+(def count
+  [elements]
+  (loop [total 0
+         rest-elements elements]
+    (if (seq elements)
+      (recur (inc total) (next rest-elements))
+      total)))
+(println (count ["dylan" "inae" "leandro" "marcos"]))
+(println (count []))

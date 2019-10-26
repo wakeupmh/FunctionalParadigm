@@ -22,7 +22,10 @@
      (map total-per-user)
      println)
 
+(defn total-of-item [[item-id details]]
+  (* (get details :quantity 0) (get details :price 0)))
 
+(defn total-of-demand [])
 
 (defn total-of-demands [demands]
     (->> demands

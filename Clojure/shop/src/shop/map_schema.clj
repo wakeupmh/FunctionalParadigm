@@ -1,5 +1,5 @@
 (ns shop.map-schema
-  :require [loja.db :as l.db])
+  :require [shop.db :as s.db])
 
 (println (l.db/all-demands))
 
@@ -22,8 +22,12 @@
      (map total-per-user)
      println)
 
+
+
 (defn total-of-demands [demands]
-  (reduce + (map demands)))
+    (->> demands
+         (map :itens)
+         (map total-of-demand)))
 
 (defn total-price-and-total-per-user [[user demands]]
   {:user-id user

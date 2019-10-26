@@ -13,6 +13,8 @@
      (map count)
      println)
 
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 (defn total-per-user [[user demands]]
   {:user-id user
    :total (count demands)})
@@ -22,15 +24,19 @@
      (map total-per-user)
      println)
 
-(defn total-of-item [[item-id details]]
+(defn total-of-item [[_ details]]
   (* (get details :quantity 0) (get details :price 0)))
 
-(defn total-of-demand [])
+(defn total-of-demand [demand]
+  (->> demand
+       (map total-of-item)
+       (reduce +)))
 
 (defn total-of-demands [demands]
     (->> demands
          (map :itens)
-         (map total-of-demand)))
+         (map total-of-demand)
+         (reduce + )))
 
 (defn total-price-and-total-per-user [[user demands]]
   {:user-id user

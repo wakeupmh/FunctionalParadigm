@@ -5,10 +5,12 @@
 (defn gastou-bastante? [info-do-usuario]
   (> (:preco-total info-do-usuario) 500))
 
+
 (let [pedidos (l.db/todos-os-pedidos)
       resumo (l.logic/resumo-por-usuario pedidos)]
   (println "keep" (keep gastou-bastante? resumo))
-  (println "filter" (filter gastou-bastante? resumo)))
+  (println "filter" (filter gastou-bastante? resumo))
+  (println (some #(> :preco-total %) 10) resumo))           ;returns if someone has total-price lower than 10
 
 
 

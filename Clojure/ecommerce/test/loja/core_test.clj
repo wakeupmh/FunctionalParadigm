@@ -1,6 +1,6 @@
-(ns shop.core-test
+(ns ecommerce.core-test
   (:require [clojure.test :refer :all]
-            [shop.core :refer :all]))
+            [ecommerce.core :refer :all]))
 
 (deftest a-test
   (testing "FIXME, I fail."

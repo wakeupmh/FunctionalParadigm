@@ -14,7 +14,7 @@
 
 
 
-(println "tentando entender dentro do keep e do filter")   
+(println "tentando entender dentro do keep e do filter")
 
 (defn gastou-bastante? [info-do-usuario]
   (println "gastou-bastante?" (:usuario-id info-do-usuario))

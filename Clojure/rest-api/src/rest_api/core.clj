@@ -8,9 +8,27 @@
             [clojure.data.json :as json])
   (:gen-class))
 
+(defn movie-handler [req]
+  {:status  200
+   :headers {"Content-Type" "text/json"}
+   :body    (str (json/write-str @movie-collection))})
+
+(defn get-parameter [req pname] (get (:params req) pname))
+
+(def movie-collection (atom []))
+
+(defn add-movie [name genere]
+  (swap! movie-collection conj {:name (str/capitalize name) :genere (str/capitalize genere)}))
+
+(defn add-movie-handler [req]
+  {:status  200
+   :headers {"Content-Type" "text/json"}
+   :body    (-> (let [p (partial getparameter req)]
+                  (str (json/write-str (add-movie (p :firstname) (p :surname))))))})
+
+
 (defroutes app-routes
-           (GET "/" [] simple-body-page)
-           (GET "/request" [] request-example)
+           (GET "/movie" [] movie-handler)
            (route/not-found "Error, page not found!"))
 
 (defn -main
@@ -22,4 +40,3 @@
     ; Run the server without ring defaults
     ;(server/run-server #'app-routes {:port port})
     (println (str "Running webserver at http:/127.0.0.1:" port "/"))))
-

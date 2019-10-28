@@ -18,7 +18,7 @@
 (def movie-collection (atom []))
 
 (defn add-movie [name category]
-  (swap! movie-collection conj {:name (str/capitalize name) :category (str/capitalize genere)}))
+  (swap! movie-collection conj {:name (str/capitalize name) :category (str/capitalize category)}))
 
 (defn add-movie-handler [req]
   {:status  200

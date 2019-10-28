@@ -23,12 +23,12 @@
 (defn add-movie-handler [req]
   {:status  200
    :headers {"Content-Type" "text/json"}
-   :body    (-> (let [p (partial getparameter req)]
-                  (str (json/write-str (add-movie (p :firstname) (p :surname))))))})
-
+   :body    (-> (let [p (partial get-parameter req)]
+                  (str (json/write-str (add-movie (p :name) (p :genere))))))})
 
 (defroutes app-routes
            (GET "/movie" [] movie-handler)
+           (POST "/movie/add" [] add-movie-handler)
            (route/not-found "Error, page not found!"))
 
 (defn -main

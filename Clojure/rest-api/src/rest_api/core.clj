@@ -17,14 +17,14 @@
 
 (def movie-collection (atom []))
 
-(defn add-movie [name genere]
-  (swap! movie-collection conj {:name (str/capitalize name) :genere (str/capitalize genere)}))
+(defn add-movie [name category]
+  (swap! movie-collection conj {:name (str/capitalize name) :category (str/capitalize genere)}))
 
 (defn add-movie-handler [req]
   {:status  200
    :headers {"Content-Type" "text/json"}
    :body    (-> (let [p (partial get-parameter req)]
-                  (str (json/write-str (add-movie (p :name) (p :genere))))))})
+                  (str (json/write-str (add-movie (p :name) (p :category))))))})
 
 (defroutes app-routes
            (GET "/movie" [] movie-handler)

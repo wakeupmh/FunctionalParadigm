@@ -3,6 +3,25 @@
   (:require [hospital.model :as h.model]
             [hospital.business :as h.business]))
 
+(defn arrive-at [person]
+  (def hospital (h.business/arrive-at :ticket-window person)))
+
+(defn simulate-day []
+  (def hospital (h.model/new-hospital))
+  (.start (.Thread (fn [] (arrive-at "111"))))
+  (.start (.Thread (fn [] (arrive-at "222"))))
+  (.start (.Thread (fn [] (arrive-at "333"))))
+  (.start (.Thread (fn [] (arrive-at "444"))))
+  (.start (.Thread (fn [] (arrive-at "555"))))
+  (.start (.Thread (fn [] (arrive-at "666"))))
+  (.start (.Thread (fn [] (arrive-at "777"))))
+  (.start (.Thread (fn [] (arrive-at "888"))))
+  (.start (.Thread (fn [] (Thread/sleep 4000)))))
+
+
+
+
+;; error implementation below
 
 (defn simulate []
   ;root binding
@@ -18,6 +37,11 @@
   (h.logic/call hospital :doctors)
   (h.logic/call hospital :ticket-window)
   (pprint hospital))
+
+
+
+
+
 
 
 

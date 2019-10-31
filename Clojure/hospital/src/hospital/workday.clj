@@ -6,6 +6,7 @@
 (defn arrive-at [person]
   (def hospital (h.business/arrive-at :ticket-window person)))
 
+; ERROR: global namespace symbol concurrency issues being root binded and shared between threads
 (defn simulate-day []
   (def hospital (h.model/new-hospital))
   (.start (.Thread (fn [] (arrive-at "111"))))

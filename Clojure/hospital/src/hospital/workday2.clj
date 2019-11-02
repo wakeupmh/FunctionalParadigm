@@ -23,6 +23,6 @@
     ;with side effects
     (swap! hospital-lima update :exams conj "111")
     (pprint @hospital-lima)
-    
+
 
     ))

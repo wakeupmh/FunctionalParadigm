@@ -36,13 +36,23 @@
       ([hospital person]
        (.start (.Thread (fn [] (arrive-at! hospital person))))))
 
-(defn prepare [hospital]
-      (fn [person] (start-thread hospital) person))
-
 (defn simulate-day-clean-code[]
       (let [hospital (atom (h.model/new-hospital))
             person ["111" "222" "333" "444" "555" "6666"]
-            start-thread #(.start (.Thread (fn [] (arrive-at! hospital %))))]
-        (map (start-thread hospital) person)
+            start (start-thread hospital)]
+        (map start person)
+        (.start (.Thread (fn [] (Thread/sleep 4000)
+                           (pprint hospital))))))
+
+
+(defn start-thread
+      [hospital person]
+       (.start (.Thread (fn [] (arrive-at! hospital person)))))
+
+(defn simulate-day-partial[]
+      (let [hospital (atom (h.model/new-hospital))
+            person ["111" "222" "333" "444" "555" "6666"]
+            start (partial start-thread hospital)]
+        (map start person)
         (.start (.Thread (fn [] (Thread/sleep 4000)
                            (pprint hospital))))))

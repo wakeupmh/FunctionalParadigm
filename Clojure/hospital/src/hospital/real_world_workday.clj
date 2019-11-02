@@ -1,10 +1,10 @@
 (ns hospital.real-world-workday
-  :use [clojure.pprint]
-  :require [hospital.model :as h.model]
-           [ hospital.business :as h.business])
+  (:use [clojure.pprint])
+  (:require [hospital.business :as h.business]
+            [hospital.model :as h.model]))
 
 (defn arrive-at [hospital person]
-  (def hospital (h.business/arrive-at hospital :ticket-window person)))
+      (swap! hospital h.business/arrive-at :ticket-window person))
 
 (defn simulate-day []
   (let [hospital (atom (h.model/new-hospital))]

@@ -56,14 +56,28 @@
         (map start person)
         (.start (.Thread (fn [] (Thread/sleep 4000)
                            (pprint hospital))))))
+(pprint (simulate-day-partial))
+
 
 (defn start-thread
       [hospital person]
       (.start (.Thread (fn [] (arrive-at! hospital person)))))
+
 ;if you see a doseq presumed it's a side effect
+
 (defn simulate-day-with-do-seq[]
       (let [hospital (atom (h.model/new-hospital))
             persons ["111" "222" "333" "444" "555" "6666"]]
-        (doseq [person persons] (start-thread hospital person))      ;looks like an for inside a for, but performed
+        (doseq [person persons]
+          (start-thread hospital person))      ;looks like an for inside a for, but performed
         (.start (.Thread (fn [] (Thread/sleep 4000)
                            (pprint hospital))))))
+(pprint (simulate-day-with-do-seq))
+;if only matter times not the sequence in your synthesis you can use dotimes
+(defn simulate-day-with-do-times[]
+      (let [hospital (atom (h.model/new-hospital))]
+        (dotimes [person 6]
+          (start-thread hospital person))
+        (.start (.Thread (fn [] (Thread/sleep 4000)
+                           (pprint hospital))))))
+(pprint (simulate-day-with-do-times))
